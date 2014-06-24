@@ -1,0 +1,17 @@
+<launch>
+	<arg name="scene" default="cirs.xml" />
+
+	<!--<arg name="model" default="$(find ik_solver_vel_pinv)/urdf/g500GTrviz_absPath.urdf"/>-->
+
+	<node name="uwsim" pkg="uwsim" type="uwsim" args="--configfile cirs.xml" output="screen" respawn="false" />
+    <include file="$(find joy_controls)/launch/hybrid_teleop.launch" />
+
+	<group ns="camera">
+			<node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc"  output="screen">
+					<param name="disparity_range" type="double" value="127.0"/>
+			</node>
+  </group> 
+  
+  
+</launch>
+

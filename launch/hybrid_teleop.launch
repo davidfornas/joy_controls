@@ -1,0 +1,33 @@
+<!-- %Tag(FULL)%-->
+<launch>
+
+
+ <!-- joy node -->
+  <node respawn="true" pkg="joy"
+        type="joy_node" name="xbox_joy" >
+    <param name="dev" type="string" value="/dev/input/js0" />
+    <param name="deadzone" value="0.1" />
+    <param name="autorepeat_rate" value="20" />
+    <remap from="/joy" to="/arm_joy" />
+  </node>
+
+ <!-- Axes -->
+  <param name="SlewAxis" value="0" type="int"/>
+  <param name="SlewDir" value="1" type="int"/>
+  <param name="ShoulderAxis" value="1" type="int"/>
+  <param name="ShoulderDir" value="1" type="int"/>
+  <param name="ElbowAxis" value="4" type="int"/>
+  <param name="ElbowDir" value="-1" type="int"/>
+  <param name="JawRotateAxis" value="3" type="int"/>
+  <param name="JawCloseAxis" value="5" type="int"/>
+  <param name="WristDir" value="-1" type="int"/>
+  <param name="JawOpenAxis" value="2" type="int"/>
+  <param name="JawDir" value="1" type="int"/>
+  <param name="scale" value="500" type="double"/>
+  
+  <param name="VehicleModeButton" value="0" type="int"/>  
+  
+  <node pkg="joy_controls" type="hybrid_teleop" name="hybrid_teleop" respawn="false" output="screen"/>
+
+</launch>
+<!-- %EndTag(FULL)%-->
