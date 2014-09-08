@@ -20,6 +20,9 @@ include_directories(include ${catkin_INCLUDE_DIRS} ${VISP_INCLUDE_DIRS})
 add_executable(hybrid_teleop src/hybrid_teleop.cpp)
 target_link_libraries(hybrid_teleop ${catkin_LIBRARIES})
 
+add_executable(cartesian_teleop src/arm5_joy_cartesian_control.cpp)
+target_link_libraries(cartesian_teleop ${catkin_LIBRARIES})
+
 install(
   TARGETS
     hybrid_teleop
