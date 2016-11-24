@@ -1,3 +1,4 @@
+//This node moves the ARM5E in the cartesian space computing itself.
 #include <ros/ros.h>
 #include <sensor_msgs/JointState.h>
 #include <sensor_msgs/Joy.h>

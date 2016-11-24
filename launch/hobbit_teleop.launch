@@ -1,0 +1,29 @@
+<launch>
+
+ <!-- joy node -->
+  <node respawn="true" pkg="joy"
+        type="joy_node" name="xbox_joy" >
+    <param name="dev" type="string" value="/dev/input/js0" />
+    <param name="deadzone" value="0.1" />
+    <param name="autorepeat_rate" value="20" />
+    <remap from="/joy" to="/arm_joy" />
+  </node>
+    <group ns="stereo_down">
+	<node name="stereo_image_proc" pkg="stereo_image_proc" type="stereo_image_proc"  output="screen">
+	  <param name="disparity_range" type="double" value="128.0"/>
+    </node>
+  </group>
+	<node name="hybrid_teleop_hobbit" pkg="joy_controls" type="hybrid_teleop_hobbit" output="screen" respawn="false"/>
+	    
+	     <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d /home/dfornas/.rviz/default.rviz" />  
+    
+	<arg name="scene" default="ti_hobbit.xml" /> 
+	<!-- arg name="scene" default="hobbit.xml" / --> 
+	<node name="uwsim" pkg="uwsim" type="uwsim" args="--configfile $(arg scene)" output="screen" respawn="false" />
+
+</launch>
+
