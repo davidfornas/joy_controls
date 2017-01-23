@@ -184,29 +184,29 @@ void TeleopUWSim::joyCallback(const sensor_msgs::Joy::ConstPtr& joy) {
 		//TODO PROPORTIONAL THRUST  to  scale_*joy->axes[axisindex[0]]*AxisDir[0]/-1500;
 		//Front thurst
 		if (joy->axes[axisindex[1]] > 0.2 || joy->axes[axisindex[1]] < -0.2) {
-			thrust.data.push_back(-0.7*joy->axes[axisindex[1]]);
-			thrust.data.push_back(-0.7*joy->axes[axisindex[1]]);
+			thrust.data.push_back(-1.2*joy->axes[axisindex[1]]);
+			thrust.data.push_back(-1.2*joy->axes[axisindex[1]]);
 		} else {
 			thrust.data.push_back(0);
 			thrust.data.push_back(0);
 		}
 		//
 		if (joy->axes[axisindex[2]] > 0.2 || joy->axes[axisindex[2]] < -0.2) {
-			thrust.data.push_back(0.7*joy->axes[axisindex[2]]);
-			thrust.data.push_back(0.7*joy->axes[axisindex[2]]);
+			thrust.data.push_back(1.2*joy->axes[axisindex[2]]);
+			thrust.data.push_back(1.2*joy->axes[axisindex[2]]);
 		} else {
 			thrust.data.push_back(0);
 			thrust.data.push_back(0);
 		}
 		//Side thrust
 		if (joy->axes[axisindex[3]] > 0.2 || joy->axes[axisindex[3]] < -0.2) {
-			thrust.data.push_back(-0.7*joy->axes[axisindex[3]]);
+			thrust.data.push_back(-1.2*joy->axes[axisindex[3]]);
 		} else {
 			thrust.data.push_back(0);
 		}
 		if (joy->axes[axisindex[0]] > 0.4 || joy->axes[axisindex[0]] < -0.4) {
-			thrust.data[0] += 0.5 * joy->axes[axisindex[0]];
-			thrust.data[1] -= 0.5 * joy->axes[axisindex[0]];
+			thrust.data[0] += 1 * joy->axes[axisindex[0]];
+			thrust.data[1] -= 1 * joy->axes[axisindex[0]];
 		}
 		thrust_pub_.publish(thrust);
 	}
